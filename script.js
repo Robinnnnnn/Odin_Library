@@ -1,3 +1,5 @@
+let num = 1;
+
 //Book obj constructor
 function Book(title, author, pages, read) {
     this.title = title;
@@ -27,7 +29,23 @@ const lotr2 = new Book("Lord of the Rings: The Two Towers", "J.R.R Tolkien", 400
 const lotr3 = new Book("Lord of the Rings: The Return of the King", "J.R.R Tolkien", 400, "No");
 let myLibrary = [lotr1, lotr2];
 
-// attach to user input submit button.
-function addBookToLibrary() {
+// Creates book obj from user input
+function createBook() {
+    let newTitle = document.getElementById("title").value;
+    let newAuthor = document.getElementById("author").value;
+    let newPages = document.getElementById("pages").value;
+    let newRead = document.getElementById("read").value;
+    const newBook = new Book(newTitle, newAuthor, newPages, newRead);
+    newBook.pushToLib();
+}
+
+
+
+function removeFromLib() {
+
+}
+
+//creates divs from array in html
+function render() {
 
 }
