@@ -1,0 +1,72 @@
+body {
+    background: rgb(19, 233, 236);
+    background: -moz-linear-gradient( 0deg, rgba(19, 233, 236, 1) 0%, rgba(45, 148, 253, 1) 100%);
+    background: -webkit-linear-gradient( 0deg, rgba(19, 233, 236, 1) 0%, rgba(45, 148, 253, 1) 100%);
+    background: linear-gradient( 0deg, rgba(19, 233, 236, 1) 0%, rgba(45, 148, 253, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#13e9ec", endColorstr="#2d94fd", GradientType=1);
+}
+
+header {
+    text-align: center;
+    height: 50px;
+    line-height: 49px;
+}
+
+form {
+    width: 200px;
+}
+
+form>input {
+    height: 45px;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-bottom: 2px solid cadetblue;
+    border-radius: 30px;
+    font-size: 26px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+}
+
+#bookContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#bookContainer>div {
+    width: 400px;
+    height: 300px;
+}
+
+#bookContainer>div>h1 {
+    color: rgb(251, 255, 0);
+    font-size: 36px;
+    padding: 5px 10px 5px 10px;
+}
+
+#addLib {
+    height: 45px;
+    width: 250px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    line-height: 44px;
+}
+
+#addLib:hover {
+    background-color: purple;
+}
+
+#circle {
+    margin-top: 65px;
+    border-radius: 50%;
+    background-color: rgb(255, 110, 110);
+    height: 35px;
+    width: 35px;
+}

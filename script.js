@@ -78,14 +78,17 @@ function render() {
             `The book is ${book.pages} pages, and ${book.readResponse()}`
         );
         bookDescrBox.appendChild(descriptionText);
+        //create remove circle div
+        const circle = document.createElement("div");
+        circle.setAttribute("id", "circle");
 
         newBookDiv.appendChild(newBookTitle);
         newBookDiv.appendChild(newBookTitle);
         newBookDiv.appendChild(newBookAuthor);
         newBookDiv.appendChild(bookDescrBox);
+        newBookDiv.appendChild(circle);
         newBookDiv.style.backgroundColor = "blue";
         newBookDiv.style.border = "2px solid black";
-        newBookTitle.style.color = "green";
     });
 }
 

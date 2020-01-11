@@ -1,36 +1,33 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <div id="main">
+    <header>TEXT WILL GO HERE TO NAME LIBRARY</header>
 
-        <div id="bookContainer">
-
-
-        </div>
-
-        <div id="formContainer">
-            <form action="script.js">
-                <input id="title" type="text" value="Lord of the Rings">
-                <input id="author" type="text" value="J.R.R Tolkien">
-                <input id="pages" type="text" value="398">
-                <input id="read" type="text" value="Yes/No">
-                <div id="addLib" onclick="createBook()">Add to Library</div>
-            </form>
-        </div>
-
-
+    <div id="formContainer">
+        <form action="script.js">
+            <h1 style="padding-bottom: 10px; text-align: center; width: 250px;">
+                Add a book to the Library!
+            </h1>
+            <input id="title" type="text" value="Lord of the Rings" />
+            <input id="author" type="text" value="J.R.R Tolkien" />
+            <input id="pages" type="text" value="398" />
+            <input id="read" type="text" value="Yes/No" />
+            <div id="addLib" onclick="createBook()">Add to Library</div>
+        </form>
     </div>
 
+    <div id="main">
+        <div id="bookContainer"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>
