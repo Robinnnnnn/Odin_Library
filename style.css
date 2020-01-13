@@ -63,7 +63,7 @@ form>input {
     background-color: purple;
 }
 
-#circle {
+.circle {
     margin-top: 65px;
     border-radius: 50%;
     background-color: rgb(255, 110, 110);

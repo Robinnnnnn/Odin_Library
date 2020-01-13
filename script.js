@@ -1,4 +1,7 @@
 let num = 1;
+const classBooks = document.getElementsByClassName("books");
+let individualCircle;
+let circle;
 
 //Book obj constructor
 function Book(title, author, pages, read) {
@@ -54,8 +57,38 @@ function createBook() {
 
     render();
 }
+//gives books individual id, will make targeting book for deletion easier
+function assignId() {
+    let jsClassBooks = Array.from(classBooks);
+    for (let i = 0; i < jsClassBooks.length; i++) {
+        jsClassBooks[i].setAttribute("id", "book" + i);
+    }
+}
 
-function removeFromLib() {}
+function assignCircleId() {
+    let circles = Array.from(document.getElementsByClassName("circle"));
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].setAttribute("id", "circles" + i);
+    }
+}
+
+function circleThing() {
+    //note to self, on addEventListener, you can not just pass in the function as a second value
+    //you must pass another function that references that function. Or it will fire immediatly and
+    //not on your event listener.
+    let targetAllCircles = Array.from(document.getElementsByClassName("circle"));
+
+    for (let i = 0; i < targetAllCircles.length; i++) {
+        targetAllCircles[i].addEventListener("click", function(event) {
+            individualCircle = event.target.getAttribute("id");
+            removeFromLib();
+        });
+    }
+}
+
+function removeFromLib() {
+    console.log(individualCircle);
+}
 
 //creates divs from array in html
 function render() {
@@ -64,6 +97,8 @@ function render() {
     myLibrary.forEach(book => {
         const newBookDiv = document.createElement("div");
         bookContainer.appendChild(newBookDiv);
+        //give books a class
+        newBookDiv.setAttribute("class", "books");
         //creates title
         const newBookTitle = document.createElement("h1");
         let titleText = document.createTextNode(`${book.title}`);
@@ -79,9 +114,10 @@ function render() {
         );
         bookDescrBox.appendChild(descriptionText);
         //create remove circle div
-        const circle = document.createElement("div");
-        circle.setAttribute("id", "circle");
+        circle = document.createElement("div");
+        circle.setAttribute("class", "circle");
 
+        //Appending all to book Div
         newBookDiv.appendChild(newBookTitle);
         newBookDiv.appendChild(newBookTitle);
         newBookDiv.appendChild(newBookAuthor);
@@ -89,7 +125,12 @@ function render() {
         newBookDiv.appendChild(circle);
         newBookDiv.style.backgroundColor = "blue";
         newBookDiv.style.border = "2px solid black";
+
+        assignId();
     });
+
+    assignCircleId();
 }
 
 render();
+circleThing();
