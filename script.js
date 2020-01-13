@@ -53,6 +53,7 @@ function createBook() {
     let newPages = document.getElementById("pages").value;
     let newRead = document.getElementById("read").value;
     const newBook = new Book(newTitle, newAuthor, newPages, newRead);
+    //adds book to myLib arr
     newBook.pushToLib();
 
     render();
@@ -85,14 +86,33 @@ function circleThing() {
         });
     }
 }
-
+//uses circle id to find parent element text content. Uses that to find its index in myLib arr. Splices the array, and rerenders the array.
 function removeFromLib() {
     console.log(individualCircle);
+    //removing from dom
+    let circleOfChoice = document.getElementById(individualCircle);
+    let getParentId = circleOfChoice.parentNode.id;
+    let parentDiv = document.getElementById(getParentId);
+
+    //needs to remove the book from array, or when rendered or books added, will add book again.
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].title === parentDiv.firstElementChild.textContent) {
+            myLibrary.splice(i, 1);
+        }
+    }
+
+    render();
 }
 
 //creates divs from array in html
 function render() {
-    const bookContainer = document.getElementById("bookContainer");
+    let bookContainer = document.getElementById("bookContainer");
+    let bookContainerChildren = bookContainer.firstElementChild;
+
+    while (bookContainerChildren) {
+        bookContainerChildren.remove();
+        bookContainerChildren = bookContainer.firstElementChild;
+    }
 
     myLibrary.forEach(book => {
         const newBookDiv = document.createElement("div");
@@ -130,7 +150,7 @@ function render() {
     });
 
     assignCircleId();
+    circleThing();
 }
 
 render();
-circleThing();
