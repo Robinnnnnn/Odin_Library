@@ -7,20 +7,27 @@
     <title>Document</title>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Gayathri:700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Yatra+One&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-    <header>TEXT WILL GO HERE TO NAME LIBRARY</header>
+    <div class="header">
+        <header>Robin Lifshitz Library</header>
+        <a href="https://github.com/Robinnnnnn/Odin_Library">
+            <img src="./Github Marks/GitHub-Mark-32px.png" alt="GitMark" />
+        </a>
+    </div>
 
     <div id="formContainer">
         <form action="script.js">
             <h1 style="padding-bottom: 10px; text-align: center; width: 250px;">
                 Add a book to the Library!
             </h1>
-            <input id="title" type="text" value="Lord of the Rings" />
-            <input id="author" type="text" value="J.R.R Tolkien" />
-            <input id="pages" type="text" value="398" />
-            <input id="read" type="text" value="Yes/No" />
+            <input id="title" type="text" value="Lord of the Rings" onfocus="this.value=''" />
+            <input id="author" type="text" value="J.R.R Tolkien" onfocus="this.value=''" />
+            <input id="pages" type="text" value="398" onfocus="this.value=''" />
+            <input id="read" type="text" value="Yes/No" onfocus="this.value=''" />
             <div id="addLib" onclick="createBook()">Add to Library</div>
         </form>
     </div>

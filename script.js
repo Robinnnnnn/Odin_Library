@@ -25,6 +25,16 @@ Book.prototype.pushToLib = function() {
     myLibrary.push(this);
 };
 
+//changes read status to other option.
+Book.prototype.changeRead = function() {
+    let lowerCase = this.read.toLowerCase();
+    if (lowercase === "yes") {
+        this.read = "No";
+    } else {
+        this.read = "Yes";
+    }
+};
+
 // Demo books - Used to populate page. Can be removed.
 const lotr1 = new Book(
     "Lord of the Rings: The Fellow Ship of the Ring",
@@ -117,24 +127,31 @@ function render() {
     myLibrary.forEach(book => {
         const newBookDiv = document.createElement("div");
         bookContainer.appendChild(newBookDiv);
+
         //give books a class
         newBookDiv.setAttribute("class", "books");
+
         //creates title
         const newBookTitle = document.createElement("h1");
         let titleText = document.createTextNode(`${book.title}`);
         newBookTitle.appendChild(titleText);
+
         //creates author
         const newBookAuthor = document.createElement("h3");
-        let authorText = document.createTextNode(`${book.author}`);
+        let authorText = document.createTextNode(`Author: ${book.author}`);
         newBookAuthor.appendChild(authorText);
+
         //Gives description of book
         const bookDescrBox = document.createElement("h3");
         let descriptionText = document.createTextNode(
-            `The book is ${book.pages} pages, and ${book.readResponse()}`
+            `Description: The book is ${book.pages} pages, and ${book.readResponse()}`
         );
         bookDescrBox.appendChild(descriptionText);
+
         //create remove circle div
         circle = document.createElement("div");
+        let circleText = document.createTextNode("X");
+        circle.appendChild(circleText);
         circle.setAttribute("class", "circle");
 
         //Appending all to book Div
@@ -143,8 +160,6 @@ function render() {
         newBookDiv.appendChild(newBookAuthor);
         newBookDiv.appendChild(bookDescrBox);
         newBookDiv.appendChild(circle);
-        newBookDiv.style.backgroundColor = "blue";
-        newBookDiv.style.border = "2px solid black";
 
         assignId();
     });
