@@ -2,6 +2,8 @@ let num = 1;
 const classBooks = document.getElementsByClassName("books");
 let individualCircle;
 let circle;
+let toggle;
+let toggleId;
 
 //Book obj constructor
 function Book(title, author, pages, read) {
@@ -16,8 +18,10 @@ Book.prototype.readResponse = function() {
     let lowerCase = this.read.toLowerCase();
     if (lowerCase === "yes") {
         return `${this.read}, I have read ${this.title}!`;
-    } else {
+    } else if (lowerCase === "no") {
         return `${this.read}, I haven't read it, but I'm planning on it.`;
+    } else {
+        return "Hmmmm let me think...";
     }
 };
 //Prototype pushes all of "Book Obj" to library array
@@ -27,8 +31,8 @@ Book.prototype.pushToLib = function() {
 
 //changes read status to other option.
 Book.prototype.changeRead = function() {
-    let lowerCase = this.read.toLowerCase();
-    if (lowercase === "yes") {
+    let readText = this.read.toLowerCase();
+    if (readText === "yes") {
         this.read = "No";
     } else {
         this.read = "Yes";
@@ -96,10 +100,36 @@ function circleThing() {
         });
     }
 }
+
+function toggleWork() {
+    let toggleChoice = document.getElementById(toggleId);
+    let parentId = toggleChoice.parentNode.id;
+    let parentDiv = document.getElementById(parentId);
+
+    //finds book in array that toggle div was inside of and changes read
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].title === parentDiv.firstElementChild.textContent) {
+            myLibrary[i].changeRead();
+        }
+    }
+
+    render();
+}
+
+//gives all toggles an Id.
+function giveToggleId() {
+    let allToggles = Array.from(document.getElementsByClassName("readStatus"));
+    for (let i = 0; i < allToggles.length; i++) {
+        allToggles[i].setAttribute("id", "toggle" + i);
+        allToggles[i].addEventListener("click", function(event) {
+            toggleId = event.target.getAttribute("id");
+            toggleWork();
+        });
+    }
+}
+
 //uses circle id to find parent element text content. Uses that to find its index in myLib arr. Splices the array, and rerenders the array.
 function removeFromLib() {
-    console.log(individualCircle);
-    //removing from dom
     let circleOfChoice = document.getElementById(individualCircle);
     let getParentId = circleOfChoice.parentNode.id;
     let parentDiv = document.getElementById(getParentId);
@@ -113,6 +143,8 @@ function removeFromLib() {
 
     render();
 }
+
+function toggleRead() {}
 
 //creates divs from array in html
 function render() {
@@ -144,9 +176,15 @@ function render() {
         //Gives description of book
         const bookDescrBox = document.createElement("h3");
         let descriptionText = document.createTextNode(
-            `Description: The book is ${book.pages} pages, and ${book.readResponse()}`
+            `Description: The book is ${book.pages} pages. ${book.readResponse()}`
         );
         bookDescrBox.appendChild(descriptionText);
+
+        //gives toggle read ability.
+        toggle = document.createElement("div");
+        toggle.setAttribute("class", "readStatus");
+        let toggleText = document.createTextNode("Click to Change Read Status");
+        toggle.appendChild(toggleText);
 
         //create remove circle div
         circle = document.createElement("div");
@@ -158,6 +196,7 @@ function render() {
         newBookDiv.appendChild(newBookTitle);
         newBookDiv.appendChild(newBookTitle);
         newBookDiv.appendChild(newBookAuthor);
+        newBookDiv.appendChild(toggle);
         newBookDiv.appendChild(bookDescrBox);
         newBookDiv.appendChild(circle);
 
@@ -165,6 +204,7 @@ function render() {
     });
 
     assignCircleId();
+    giveToggleId();
     circleThing();
 }
 

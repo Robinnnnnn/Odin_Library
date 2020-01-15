@@ -59,7 +59,7 @@ form>input {
 
 #bookContainer>div {
     width: 400px;
-    height: 300px;
+    height: 325px;
     background-color: rgba(104, 171, 179, 0.7);
     margin-top: 15px;
     margin-bottom: 15px;
@@ -116,4 +116,21 @@ form>input {
     font-family: "Gayathri", sans-serif;
     font-weight: 700;
     border: 1px solid black;
+}
+
+.readStatus {
+    width: 205px;
+    height: 25px;
+    background-color: rgb(255, 110, 110);
+    text-align: center;
+    border-radius: 5px;
+    line-height: 25px;
+}
+
+.readStatus:hover {
+    border: 1px solid black;
+}
+
+.readStatus:active:hover {
+    background-color: rgb(173, 68, 68);
 }

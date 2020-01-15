@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Robins Lib</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css?family=Gayathri:700&display=swap" rel="stylesheet" />
@@ -14,20 +15,20 @@
 <body>
     <div class="header">
         <header>Robin Lifshitz Library</header>
-        <a href="https://github.com/Robinnnnnn/Odin_Library">
+        <a href="https://github.com/Robinnnnnn/Odin_Library" target="_blank">
             <img src="./Github Marks/GitHub-Mark-32px.png" alt="GitMark" />
         </a>
     </div>
 
     <div id="formContainer">
         <form action="script.js">
-            <h1 style="padding-bottom: 10px; text-align: center; width: 250px;">
-                Add a book to the Library!
+            <h1 id="formHeader" style="padding-bottom: 10px; text-align: center; width: 250px;">
+                Add a book!
             </h1>
-            <input id="title" type="text" value="Lord of the Rings" onfocus="this.value=''" />
-            <input id="author" type="text" value="J.R.R Tolkien" onfocus="this.value=''" />
-            <input id="pages" type="text" value="398" onfocus="this.value=''" />
-            <input id="read" type="text" value="Yes/No" onfocus="this.value=''" />
+            <input id="title" type="text" value="Title" onfocus="this.value=''" />
+            <input id="author" type="text" value="Author" onfocus="this.value=''" />
+            <input id="pages" type="text" value="Pages" onfocus="this.value=''" />
+            <input id="read" type="text" value="Read it?" onfocus="this.value=''" />
             <div id="addLib" onclick="createBook()">Add to Library</div>
         </form>
     </div>
